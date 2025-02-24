@@ -43,7 +43,7 @@ function Sidebar() {
     },
     {
       label: "사용 내역",
-      path: "/history",
+      path: "/usage-history",
       icon: <ClockIcon className="w-5 h-5" />,
     },
   ];
