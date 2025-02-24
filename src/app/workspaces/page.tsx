@@ -1,19 +1,25 @@
-import WorkspaceList from "./(components)/WorkspaceList";
 import { getApiUrl } from "@/utils/api";
-import type { WorkspaceListResponse, ResourceGroupListResponse } from "./types";
+import WorkspaceList from "./(components)/WorkspaceList";
+import type { WorkspaceListResponse } from "./types";
 
-export default async function WorkspacesPage({
+interface Props {
+  searchParams: Promise<{ sortBy?: string }>;
+}
+
+export default function Page({
   searchParams,
 }: {
   searchParams: Promise<{ sortBy?: string }>;
 }) {
+  return <WorkspaceListContainer searchParams={searchParams} />;
+}
+
+async function WorkspaceListContainer({ searchParams }: Props) {
   const [workspaces, resourceGroups] = await Promise.all([
     fetch(getApiUrl("/workspaces", await searchParams)).then(
       (res) => res.json() as Promise<WorkspaceListResponse>
     ),
-    fetch(getApiUrl("/resource-groups")).then(
-      (res) => res.json() as Promise<ResourceGroupListResponse>
-    ),
+    fetch(getApiUrl("/resource-groups")).then((res) => res.json()),
   ]);
 
   return (
