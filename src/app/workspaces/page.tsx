@@ -5,7 +5,7 @@ import type { WorkspaceListResponse, ResourceGroupListResponse } from "./types";
 export default async function WorkspacesPage({
   searchParams,
 }: {
-  searchParams: { sortBy?: string };
+  searchParams: Promise<{ sortBy?: string }>;
 }) {
   const [workspaces, resourceGroups] = await Promise.all([
     fetch(getApiUrl("/workspaces", await searchParams)).then(
