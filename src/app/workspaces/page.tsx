@@ -1,4 +1,4 @@
-import WorkspaceList from "./components/WorkspaceList";
+import WorkspaceList from "./(components)/WorkspaceList";
 import { getApiUrl } from "@/utils/api";
 import type { WorkspaceListResponse, ResourceGroupListResponse } from "./types";
 

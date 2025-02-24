@@ -19,7 +19,6 @@ const MOCK_WORKSPACES: Workspace[] = [
     },
     status: {
       type: "pending",
-      message: "생성 대기중",
     },
   },
   {
